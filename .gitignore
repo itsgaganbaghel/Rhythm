@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# adding firebase 
-Firebase.jsx
+# adding firebase keys in env
+
+.env

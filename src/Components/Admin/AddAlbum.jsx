@@ -3,7 +3,7 @@ import CustomInputFields from '../utilities/CustomInputFields'
 import { addAlbumContext } from '../Context/SongContext'
 import toast from 'react-hot-toast'
 import { addDoc, collection } from 'firebase/firestore'
-import { __DB } from '../../../Backend/Firebase'
+import { __DB } from '../../Backend/Firebase'
 
 const AddAlbum = () => {
   let initialAlbumData = {

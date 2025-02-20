@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from "react"
 import { AuthUserContext } from "../../Context/AuthContext"
-import { __DB } from "../../../../Backend/Firebase"
+import { __DB } from "../../../Backend/Firebase"
 import { NavLink } from "react-router-dom"
 import { FaRegEdit } from "react-icons/fa"
 import profile404 from "../../../assets/profile404.png"

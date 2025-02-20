@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import React, { createContext, useCallback, useEffect, useState } from 'react'
-import { __AUTH, __DB } from '../../../Backend/Firebase'
+import { __AUTH, __DB } from '../../Backend/Firebase'
 import { doc, onSnapshot } from 'firebase/firestore'
 
 

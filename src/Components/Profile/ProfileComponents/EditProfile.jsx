@@ -6,7 +6,7 @@ import countries from "../../utilities/InputData/Countries.json"
 import states from "../../utilities/InputData/states.json"
 import cities from "../../utilities/InputData/Cities.json"
 import { doc, setDoc } from 'firebase/firestore'
-import { __DB } from '../../../../Backend/Firebase'
+import { __DB } from '../../../Backend/Firebase'
 import { AuthUserContext } from '../../Context/AuthContext'
 import toast from 'react-hot-toast'
 import { modalProviderContext } from '../../Context/ModalContext'

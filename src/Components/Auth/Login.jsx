@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import React, { useContext, useState } from 'react'
-import { __AUTH } from '../../../Backend/Firebase'
+import { __AUTH } from '../../Backend/Firebase'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import CustomInputFields from '../utilities/CustomInputFields'

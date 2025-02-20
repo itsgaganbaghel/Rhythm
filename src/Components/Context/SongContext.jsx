@@ -2,7 +2,7 @@ import axios from 'axios'
 import { collection, getDocs } from 'firebase/firestore'
 import React, { createContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { __DB } from '../../../Backend/Firebase'
+import { __DB } from '../../Backend/Firebase'
 
 export let addAlbumContext = createContext()
 

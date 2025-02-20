@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthUserContext } from '../Context/AuthContext'
-import { __AUTH } from '../../../Backend/Firebase'
+import { __AUTH } from '../../Backend/Firebase'
 import { modalProviderContext } from '../Context/ModalContext'
 import MyProfile from '../Profile/ProfileComponents/MyProfile'
 import Modal from '../Model/Modal'

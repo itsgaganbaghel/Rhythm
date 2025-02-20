@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { AuthUserContext } from "../../Context/AuthContext"
 import { useNavigate } from "react-router-dom"
-import { __AUTH } from "../../../../Backend/Firebase"
+import { __AUTH } from "../../../Backend/Firebase"
 import toast from "react-hot-toast"
 import CustomInputFields from "../../utilities/CustomInputFields"
 import { updatePassword } from "firebase/auth"
