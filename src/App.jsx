@@ -7,11 +7,14 @@ import AlbumSideBar from './Components/Pages/AlbumPages/AlbumSideBar'
 import logo from "./assets/logo.png"
 
 import { AuthUserContext } from './Components/Context/AuthContext'
+import CustomAudioPlayer from './Components/utilities/CustomAudioPlayer'
+import { addAlbumContext } from './Components/Context/SongContext'
 
 const App = () => {
 
-  let {showWebsite, setShowWebsite} = useContext(AuthUserContext)
-
+  let { showWebsite, setShowWebsite } = useContext(AuthUserContext)
+  let { audioPlayerData } = useContext(addAlbumContext)
+  console.log("audioPlayerData", audioPlayerData)
   useEffect(() => {
     const showWebsiteTimeout = setTimeout(() => {
       setShowWebsite(true);
@@ -34,6 +37,12 @@ const App = () => {
         <div className='flex flex-col lg:w-[86%] w-full'>
           <NavbarContainer />
           <Outlet />
+          {
+            audioPlayerData.length > 0 &&
+            <div className=' w-full fixed bottom-0'>
+              <CustomAudioPlayer tracks={audioPlayerData} />
+            </div>
+          }
         </div>
         <Toaster />
       </div>

@@ -11,7 +11,7 @@ const AlbumSongs = ({ album }) => {
 
     return (
         <div className='w-full '>
-            <div className=' w-full flex  text-2xl font-serif  border-b-2 border-b-secondary sticky py-4 mb-6 '>
+            <div className=' w-full flex  text-2xl font-serif  border-b-2 border-b-secondary sticky py-4  '>
                 <p className='pl-28'>Track</p>
                 <p className='pl-[25%]'>Song Name </p>
                 <p></p>
@@ -19,7 +19,7 @@ const AlbumSongs = ({ album }) => {
             {
                 allSongsData.map((v, i) => {
                     return (
-                        <div key={i} className='w-full h-[100px]  grid grid-cols-3 mb-10 rounded-md  items-center px-10 hover:bg-light  hover:text-primary'
+                        <div key={i} className='w-full h-[100px]  grid grid-cols-3 mb-10 rounded-md  items-center px-10 hover:bg-secondary'
                             style={{ background: songIndex === i ? "#292C35" : "", }}
                         >
                             {/* Song Number and Thumbnail */}
@@ -47,9 +47,9 @@ const AlbumSongs = ({ album }) => {
                             </div>
 
                             {/*  play pause Icon */}
-                            <p>
+                            {/* <p>
                                 💖 
-                            </p>
+                            </p> */}
                         </div >
                     )
                 })

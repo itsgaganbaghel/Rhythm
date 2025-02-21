@@ -1,16 +1,22 @@
 import { FaXTwitter, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 
 import logo from "../../assets/logo.png"
+import { useContext } from "react";
+import { addAlbumContext } from "../Context/SongContext";
 
 
 const Footer = () => {
+
+    let { audioPlayerData } = useContext(addAlbumContext)
+
     return (
-        <footer className="bg-primary shadow-lg border-t-2 border-t-secondary/80  shadow-secondary text-gray-300 py-10 px-5">
+        <footer className={`bg-primary border-t-2 border-t-secondary/80   text-gray-300 py-4 px-5
+        ${audioPlayerData.length > 0 && "mb-[15vh]"}`}>
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <div>
                     <h3 className="text-white font-semibold mb-2">TOP ARTISTS</h3>
                     <ul className="space-y-1">
-                        {["Arijit Singh", "King", "Honey Singh", "Badshah",  "Diljit Dosanjh"].map((artist, index) => (
+                        {["Arijit Singh", "King", "Honey Singh", "Badshah", "Diljit Dosanjh"].map((artist, index) => (
                             <li key={index} className="hover:text-white cursor-pointer">{artist}</li>
                         ))}
                     </ul>

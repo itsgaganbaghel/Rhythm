@@ -9,6 +9,7 @@ export let addAlbumContext = createContext()
 const SongContext = ({ children }) => {
     let [songsData, setSongsData] = useState([])
     let [songIndex, setSongIndex] = useState(0)
+    let [audioPlayerData, setAudioPlayerData] = useState([])
     let [allAlbums, setAllAlbums] = useState([])
     // console.log(allAlbums    )
 
@@ -52,7 +53,7 @@ const SongContext = ({ children }) => {
     }, [allAlbums])
 
     return (
-        <addAlbumContext.Provider value={{ songIndex, setSongIndex, uploadOnCloudinary, setSongsData, songsData, allAlbums, allSongs }} >
+        <addAlbumContext.Provider value={{ songIndex, setSongIndex, uploadOnCloudinary, setSongsData, songsData, allAlbums, allSongs, audioPlayerData, setAudioPlayerData }} >
             {children}
         </addAlbumContext.Provider>
     )

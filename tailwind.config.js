@@ -8,7 +8,8 @@ export default {
       colors: {
         primary: "#17181D",   // Dark Grayish Black (Main Background)
         secondary: "#292C35", // Muted Charcoal Gray (Secondary Background)
-        accent: "#8AC5CD",    // Warm Orange (Highlight, Buttons)
+        accent: "skyblue",    // Warm Orange (Highlight, Buttons)
+        // accent: "#8AC5CD",    // Warm Orange (Highlight, Buttons)
         // accent: "#F09145",    // Warm Orange (Highlight, Buttons)
         light: "#FCD9B8",     // Soft Peach (Text Highlights, Backgrounds)
       },

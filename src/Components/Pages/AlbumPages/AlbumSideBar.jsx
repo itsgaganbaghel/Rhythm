@@ -5,7 +5,7 @@ import { modalProviderContext } from '../../Context/ModalContext'
 import Modal from '../../Model/Modal'
 import { signOut } from 'firebase/auth'
 import { __AUTH } from '../../../Backend/Firebase'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthUserContext } from '../../Context/AuthContext'
 import toast from 'react-hot-toast'
 
@@ -13,6 +13,7 @@ const AlbumSideBar = () => {
     let { isVisibility, setVisibility, targetModel, setTargetModel } = useContext(modalProviderContext)
     let { profileData, authUserData, role } = useContext(AuthUserContext || {})
     let navigate = useNavigate()
+    let location = useLocation()
     let handleSingOut = (e) => {
         signOut(__AUTH)
         window.localStorage.removeItem("TOKEN")
@@ -26,36 +27,53 @@ const AlbumSideBar = () => {
         setVisibility(true)
     }
 
+
+
     return (
         <div className=' min-h-[100vh] flex flex-col gap-2  items-center bg-primary border-r-2 border-r-accent text-light font-bold tracking-wide px-3  '>
             <Logo />
             <p className='w-full pl-1 opacity-70 text-sm text-accent'>Browse</p>
+            {
+                location?.pathname == "/" ?
+                    <>
 
-            <a href='#Hero'
-                className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-            >
-                Home
-            </a>
-            <a href='#top_Album'
-                className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-            >
-                Top Albums
-            </a>
-            <a href='#trending_Artist'
-                className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-            >
-                Trending Artist
-            </a>
-            <a href='#new_Release'
-                className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-            >
-                New Release
-            </a>
-            <a href='#random_Songs'
-                className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-            >
-                Random Songs
-            </a>
+                        <a href='#Hero'
+                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                        >
+                            Home
+                        </a>
+                        <a href='#top_Album'
+                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                        >
+                            Top Albums
+                        </a>
+                        <a href='#trending_Artist'
+                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                        >
+                            Trending Artist
+                        </a>
+                        <a href='#new_Release'
+                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                        >
+                            New Release
+                        </a>
+                        <a href='#random_Songs'
+                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                        >
+                            Random Songs
+                        </a>
+                    </>
+                    :
+                    <>
+                        <CustomNavLink to={'/'} text={"Home"} />
+                        <CustomNavLink to={'/'} text={"Top Albums"} />
+                        <CustomNavLink to={'/'} text={"Trending Artist "} />
+                        <CustomNavLink to={'/'} text={"New Release"} />
+                        <CustomNavLink to={'/'} text={"Random Songs"} />
+                    </>
+            }
+
+
 
             <p className='w-full pl-1 opacity-70 text-sm text-accent mt-6'>Library</p>
             <CustomNavLink to={'/'} text={"All Albums"} />

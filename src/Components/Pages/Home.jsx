@@ -12,8 +12,8 @@ const Home = () => {
       <Hero />
       <TopAlbum />
       <TrendingArtist />
-      <NewReleased count={3} unique={true} />
-      <RandomSongs count={7} />
+      <NewReleased count={5} unique={true} />
+      <RandomSongs count={11} />
       <Footer />
 
     </div>

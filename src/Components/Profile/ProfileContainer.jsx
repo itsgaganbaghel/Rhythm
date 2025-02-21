@@ -9,10 +9,10 @@ const ProfileContainer = () => {
 
         <div className='w-full min-h-[100vh] flex justify-center items-center bg-primary font-sans
         '>
-            <div className='lg:w-[16%] lg:relative lg:left-0  absolute z-10 -left-[56%]'>
+            <div className='lg:w-[14%] lg:relative lg:left-0  absolute z-10 -left-[56%]'>
                 <AlbumSideBar />
             </div>
-            <div className='md:w-[84%] flex justify-center items-center relative'>
+            <div className='md:w-[86%] flex justify-center items-center relative'>
                 <Outlet />
             </div>
             <Toaster />

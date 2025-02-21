@@ -1,10 +1,6 @@
 
 import { Link } from 'react-router-dom';
 import CustomButton from '../../utilities/CustomButton';
-import { useContext } from 'react';
-import { modalProviderContext } from '../../Context/ModalContext';
-import Modal from '../../Model/Modal';
-import Admin from '../../Admin/Admin';
 
 const navLinks = [
 

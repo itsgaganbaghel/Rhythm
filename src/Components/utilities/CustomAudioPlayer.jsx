@@ -2,14 +2,13 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { FaPause, FaVolumeDown, FaVolumeUp } from 'react-icons/fa';
 import { IoPlayBackSharp, IoPlayForwardSharp, IoPlaySharp } from 'react-icons/io5';
-import SongContext, { addAlbumContext } from '../Context/SongContext';
+import { addAlbumContext } from '../Context/SongContext';
 
-const CustomAudioPlayer = ({ albumData }) => {
+
+const CustomAudioPlayer = ({ tracks }) => {
 
     let { songIndex, setSongIndex } = useContext(addAlbumContext);
 
-    let { allSongsData: tracks } = albumData
-    console.log(tracks)
     const [trackIndex, setTrackIndex] = useState(0);
 
     useEffect(() => {
@@ -51,22 +50,22 @@ const CustomAudioPlayer = ({ albumData }) => {
             audioRef.current.pause();
         }
     }, [isPlaying]);
-    
+
 
     useEffect(() => {
         if (!audioSrc) return;
-        
+
         audioRef.current.pause();
         audioRef.current.src = audioSrc; // Instead of creating a new Audio instance
         audioRef.current.volume = volume;
         setTrackProgress(0); // Reset progress for new song
-    
+
         if (isPlaying) {
             audioRef.current.play();
             startTimer();
         }
     }, [trackIndex, audioSrc]);
-    
+
 
     useEffect(() => {
         return () => {
@@ -141,7 +140,7 @@ const CustomAudioPlayer = ({ albumData }) => {
 
 
     return (
-        <div className="flex  max-h-[15vh] min-[15vh] items-center  gap-5  bg-secondary shadow-2xl text-white  pl-4 py-4 w-[84vw] ">
+        <div className="flex  max-h-[15vh] min-[15vh] items-center  gap-5  bg-secondary shadow-2xl text-white  pl-4 py-4 w-[86vw] ">
 
             <div className='min-w-[20%] h-full flex justify-start items-center gap-4  '>
 

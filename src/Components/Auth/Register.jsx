@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } 
 import React, { useContext, useState } from 'react'
 import { __AUTH } from '../../Backend/Firebase'
 import toast from 'react-hot-toast'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import CustomInputFields from '../utilities/CustomInputFields'
 import { modalProviderContext } from '../Context/ModalContext'
 import Modal from '../Model/Modal'
@@ -53,9 +53,9 @@ const Register = () => {
   }
 
   return (
-    <div className='md:min-w-[70vw]  min-w-[100vw]  md:min-h-[80vh] py-16 shadow-[inset_5px_-5px_5px_#101215,inset_-5px_5px_5px_#424655] bg-secondary rounded-2xl flex justify-center md:gap-24 items-center text-light'>
+    <div className='md:min-w-[70vw]  min-w-[100vw]  md:min-h-[80vh] py-16 shadow-[inset_5px_-5px_5px_#101215,inset_-5px_5px_5px_#424655] bg-secondary rounded-2xl flex justify-center md:gap-10 items-center text-light'>
       {/* Heading */}
-      <div className='w-[35%] mb-6 text-center hidden md:block'>
+      <div className='w-[45%] mb-6 text-center hidden md:block'>
         <h2 className='text-[3rem] font-bold text-accent border-accent pb-4'>Create an Account</h2>
         <h2 className='text-[1.5rem] font-semibold tracking-wider text-light border-accent pb-4 font-serif'>Join us and start your journey <br /> With Rhythm..</h2>
       </div>

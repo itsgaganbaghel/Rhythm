@@ -3,7 +3,8 @@ import React from "react";
 const CustomButton = ({ children }) => {
     return (
         <div className=" w-full h-full">
-            <style jsx>{`
+            <style>
+              {`
         .border {
           position: absolute;
           inset: 0;
@@ -37,6 +38,7 @@ const CustomButton = ({ children }) => {
           }
         }
       `}</style>
+
             <button className="button group w-full h-full">
                 <div className="w-full h-full  flex  flex-col justify-center ">
                     {/* Hover Me */}
