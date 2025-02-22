@@ -39,7 +39,7 @@ const App = () => {
           <Outlet />
           {
             audioPlayerData.length > 0 &&
-            <div className=' w-full fixed bottom-0'>
+            <div className=' w-full fixed bottom-0 z-30'>
               <CustomAudioPlayer tracks={audioPlayerData} />
             </div>
           }

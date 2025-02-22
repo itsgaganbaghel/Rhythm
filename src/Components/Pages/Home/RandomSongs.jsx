@@ -4,9 +4,14 @@ import { NavLink } from 'react-router-dom'
 import { FaArrowRight } from 'react-icons/fa6'
 import { RiPlayLargeLine } from 'react-icons/ri'
 
-const RandomSongs = ({ count }) => {
-    let { allSongs, setAudioPlayerData } = useContext(addAlbumContext)
+import gif from "../../../assets/playing.gif"
 
+const RandomSongs = ({ count }) => {
+    let { allSongs, audioPlayerData, setAudioPlayerData, setSongIndex, songIndex } = useContext(addAlbumContext)
+    let handleAudio = (index) => {
+        setAudioPlayerData(allSongs)
+        setSongIndex(index)
+    }
     return (
         <div className='w-full min-h-[38vh] text-light ' id='random_Songs'>
             <p className=' text-4xl font-serif mb-6 pl-10 font-extrabold'>Random Songs</p>
@@ -19,13 +24,26 @@ const RandomSongs = ({ count }) => {
                             return (
                                 <figure className=' w-[150px] ' key={index}>
                                     <div className='group relative w-[150px]   h-[150px] cursor-pointer  '>
-                                        <div className='absolute inset-0  bg-black/70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full  '
-                                            onClick={() => setAudioPlayerData([song])}
+                                        {
+                                            !((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
+
+                                            <div className='absolute inset-0  bg-black/70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full  '
+                                                onClick={() => handleAudio(index)}
+                                            >
+                                                <p className='text-6xl text-white '>
+                                                    <RiPlayLargeLine />
+                                                </p>
+                                            </div>
+                                        }
+                                        {
+                                            ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
+
+                                            <div className='absolute  bottom-0 w-[150px] h-[100%] bg-gradient-to-t from-white to-transparent flex justify-center items-end pb-3 rounded-full cursor-pointer z-20 '
+                                            onClick={() => handleAudio(index)}
                                         >
-                                            <p className='text-6xl text-white '>
-                                                <RiPlayLargeLine />
-                                            </p>
+                                            <img src={gif} className='w-[60%] h-[50%]' />
                                         </div>
+                                        }
 
                                         <img src={song?.songThumbnail} className='  rounded-full w-[150px]   h-[150px]  object-cover ' alt={song?.songName} />
                                     </div>
@@ -44,7 +62,7 @@ const RandomSongs = ({ count }) => {
                     </NavLink>
                 }
             </div>
-        </div>
+        </div >
     )
 
 }

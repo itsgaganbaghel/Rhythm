@@ -7,26 +7,29 @@ import { addAlbumContext } from '../Context/SongContext';
 
 const CustomAudioPlayer = ({ tracks }) => {
 
+
     let { songIndex, setSongIndex } = useContext(addAlbumContext);
 
     const [trackIndex, setTrackIndex] = useState(0);
 
     useEffect(() => {
         setTrackIndex(songIndex)
-        console.log(songIndex)
-        // return setTrackIndex(0)
     }, [songIndex])
 
     const [trackProgress, setTrackProgress] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [volume, setVolume] = useState(0.5); // Initial volume set to 50%
+
+    console.log("tracks[songIndex].audioSrc", tracks)
+    console.log("tracks[songIndex].audioSrc", songIndex)
+    console.log("tracks[songIndex].audioSrc", tracks[songIndex])
+
 
     const audioRef = useRef(new Audio(tracks[songIndex].audioSrc));
     const intervalRef = useRef();
     const isReady = useRef(false);
 
-    const { songName: title, songActors: artist, color, songThumbnail: image, songUrl: audioSrc } = tracks[trackIndex];
-    console.log(audioSrc)
+    const { songName: title, songActors: artist, color, songThumbnail: image, songUrl: audioSrc } = tracks[songIndex];
     const { duration } = audioRef.current;
 
     const startTimer = () => {
