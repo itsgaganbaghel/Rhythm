@@ -18,15 +18,14 @@ const CustomAudioPlayer = ({ tracks }) => {
     }, [songIndex])
 
     const [trackProgress, setTrackProgress] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [volume, setVolume] = useState(0.5); // Initial volume set to 50%
 
     const audioRef = useRef(new Audio(tracks[songIndex].audioSrc));
     const intervalRef = useRef();
     const isReady = useRef(false);
 
-    const { songName: title, songActors: artist, color, songThumbnail: image, songUrl: audioSrc } = tracks[trackIndex];
-    console.log(audioSrc)
+    const { songName: title, songActors: artist, color, songThumbnail: image, songUrl: audioSrc } = tracks[songIndex];
     const { duration } = audioRef.current;
 
     const startTimer = () => {

@@ -8,8 +8,6 @@ const AlbumDetails = () => {
     let stateData = useLocation()
     let { album } = stateData.state
     console.log('album', album)
-    let { setAudioPlayerData } = useContext(addAlbumContext)
-    setAudioPlayerData(album?.allSongsData)
 
     return (
         <div className=' w-[86vw] relative mb-[17vh]'>
