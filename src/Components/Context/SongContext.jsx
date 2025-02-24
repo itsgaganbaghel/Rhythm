@@ -7,15 +7,14 @@ import { __DB } from '../../Backend/Firebase'
 export let addAlbumContext = createContext()
 
 const SongContext = ({ children }) => {
-    let [songsData, setSongsData] = useState([]) // songs data : for payload
-    let [songIndex, setSongIndex] = useState(null) //songIndex : dynamic indexing updation
-    let [audioPlayerData, setAudioPlayerData] = useState([]) // current song data 
-    let [allAlbums, setAllAlbums] = useState([]) // all albums data : for displaying albums
-    let [allSongs, setAllSongs] = useState([]) // all songs for new release , top , random etc
+    let [songsData, setSongsData] = useState([])
+    let [songIndex, setSongIndex] = useState(0)
+    let [audioPlayerData, setAudioPlayerData] = useState([])
+    let [allAlbums, setAllAlbums] = useState([])
+    // console.log(allAlbums    )
 
-    let [favorite, setFavorite] = useState()
+    let [allSongs, setAllSongs] = useState([])
 
-    // for uploading all the phots and songs url one by one in the cloudinary and return the url of the file
     let uploadOnCloudinary = async (e) => {
         let file = e.target.files[0]
         let formData = new FormData()
@@ -31,7 +30,6 @@ const SongContext = ({ children }) => {
         }
     }
 
-    //  fetching all albums form the firebase db
     let fetchAllAlbums = async () => {
         const albumCollections = collection(__DB, "albumData");
         const getAlbumDocs = await getDocs(albumCollections)

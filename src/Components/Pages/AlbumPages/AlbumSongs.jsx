@@ -1,19 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { RiPlayLargeLine } from 'react-icons/ri'
 import { addAlbumContext } from '../../Context/SongContext'
-import gif from "../../../assets/playing.gif"
 
 const AlbumSongs = ({ album }) => {
     let { allSongsData } = album
 
-    let { songIndex, setSongIndex, audioPlayerData, setAudioPlayerData } = useContext(addAlbumContext);
+    let { songIndex, setSongIndex } = useContext(addAlbumContext);
+    console.log(songIndex, "index");
 
-    let handleAudioInAlbum = (indexValue) => {
-        setAudioPlayerData(album?.allSongsData)
-        setSongIndex(indexValue)
-    }
-
-    console.log(audioPlayerData, "daddf")
 
     return (
         <div className='w-full '>
@@ -25,15 +19,13 @@ const AlbumSongs = ({ album }) => {
             {
                 allSongsData.map((v, i) => {
                     return (
-                        <div key={i} className='w-full h-[100px]   grid grid-cols-3 mb-10 rounded-md  items-center px-10 hover:bg-secondary'
-                            style={(audioPlayerData.length > 0 && audioPlayerData[songIndex]?.songName === v.songName)
-                                ? { background: "#292C35" }
-                                : {}}
+                        <div key={i} className='w-full h-[100px]  grid grid-cols-3 mb-10 rounded-md  items-center px-10 hover:bg-secondary'
+                            style={{ background: songIndex === i ? "#292C35" : "", }}
                         >
                             {/* Song Number and Thumbnail */}
                             <div className='flex items-center gap-10 ' >
                                 <p className='text-2xl'>{i + 1}.</p>
-                                <div className='relative group' onClick={() => handleAudioInAlbum(i)}>
+                                <div className='relative group' onClick={() => setSongIndex(i)}>
                                     <img
                                         src={v?.songThumbnail}
                                         className='w-[90px] h-[80px] rounded-md object-cover border-[1px] border-slate-600/40'
@@ -54,19 +46,10 @@ const AlbumSongs = ({ album }) => {
                                 <p className='text-gray-400 font-serif text-[0.8rem]'>{v?.songSingers}</p>
                             </div>
 
-
+                            {/*  play pause Icon */}
                             {/* <p>
                                 💖 
                             </p> */}
-                            <div className=' flex justify-center items-center w-full h-full'>
-
-                                {
-                                    ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == v.songName)) &&
-
-
-                                    <img src={gif} className='w-[120px] h-1/2' />
-                                }
-                            </div>
                         </div >
                     )
                 })

@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const AlbumHeaderSection = ({ album }) => {
     let { albumDescription, albumLanguage, albumName, albumThumbnail, artistName, releasedDate } = album
+    let topRef = useRef()
+    useEffect(() => {
+        topRef.current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+
+    },[])
     return (
         <div className='w-full h-[35vh] bg-secondary text-primary flex items-center  justify-center pl-6 '>
             <header className='h-full w-[30%]'>
