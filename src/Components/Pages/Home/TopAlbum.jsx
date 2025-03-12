@@ -72,7 +72,7 @@ const TopAlbum = () => {
                                 )
                             })
                         }
-                       
+
 
 
                     </Slider>

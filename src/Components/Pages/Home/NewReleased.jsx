@@ -7,6 +7,7 @@ import gif from "../../../assets/playing.gif"
 
 const NewReleased = ({ count, unique = false }) => {
     let { allSongs, audioPlayerData, setAudioPlayerData, setSongIndex, songIndex } = useContext(addAlbumContext)
+    let { isPlaying, setIsPlaying } = useContext(addAlbumContext)
     let [allSortedSongs, setAllSortedSongs] = useState([])
 
     let findSortedArrayOfSongs = () => {
@@ -36,19 +37,20 @@ const NewReleased = ({ count, unique = false }) => {
     let handleAudio = (index) => {
         setAudioPlayerData(allSortedSongs)
         setSongIndex(index)
+        setIsPlaying(true)
     }
 
 
 
     return (
-        <div className='w-full min-h-[38vh] text-light  ' id='new_Release'>
+        <div className='w-full min-h-[38vh] text-light' id='new_Release'>
             <p className=' text-4xl font-serif mb-6 pl-8  font-extrabold'>New Released</p>
             <div className='w-full flex flex-wrap justify-between px-14 relative'>
                 {
                     allSortedSongs.length > 0 &&
                     allSortedSongs.map((song, index) => (
                         <>
-                            <figure className='w-[150px] relative' key={index}>
+                            <figure className='w-[150px] relative  cursor-pointer' key={index}>
                                 <div className='group relative w-[150px]   h-[150px] '>
                                     {
                                         !((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
@@ -62,7 +64,7 @@ const NewReleased = ({ count, unique = false }) => {
                                         </div>
                                     }
                                     {
-                                        ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
+                                        ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) && isPlaying == true &&
                                         <div className='absolute  bottom-0 w-[150px] h-[100%] bg-gradient-to-t from-white to-transparent flex justify-center items-end pb-3 rounded-full cursor-pointer z-20 '
                                             onClick={() => handleAudio(index)}
                                         >
@@ -70,8 +72,8 @@ const NewReleased = ({ count, unique = false }) => {
 
 
                                         </div>
-                                    }
 
+                                    }
 
 
                                     <img src={song?.songThumbnail} className='  rounded-full w-[150px]   h-[150px]  object-cover ' alt={song?.songName} />

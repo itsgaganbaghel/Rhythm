@@ -13,8 +13,7 @@ import Home from '../Pages/Home'
 import Setting from '../Profile/ProfileComponents/Setting'
 import ProtectedRoutes from './ProtectedRoutes'
 import AdminRoutes from './AdminRoutes'
-import IndexOfAdminPresentataion from '../presentation/PresentationAdminComponent/IndexOfAdminPresentataion'
-
+import LikedSongs from '../Pages/LikedSongs'
 export const Routers = createBrowserRouter([
     {
         path: '/',
@@ -32,6 +31,10 @@ export const Routers = createBrowserRouter([
                     {
                         path: "album/:id",
                         element: <AlbumDetails />
+                    },
+                    {
+                        path: '/user/FavoriteSongs',
+                        element: <LikedSongs />
                     }
                 ]
             },
@@ -53,10 +56,6 @@ export const Routers = createBrowserRouter([
             {
                 index: true,
                 element: <Setting />
-            },
-            {
-                path: "/user/presentation/addAlbum",
-                element: <IndexOfAdminPresentataion />
             },
             {
                 path: 'addAlbum',

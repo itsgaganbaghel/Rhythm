@@ -7,9 +7,11 @@ import gif from "../../../assets/playing.gif"
 
 const RandomSongs = ({ count }) => {
     let { allSongs, audioPlayerData, setAudioPlayerData, setSongIndex, songIndex } = useContext(addAlbumContext)
+    let { isPlaying, setIsPlaying } = useContext(addAlbumContext)
     let handleAudio = (index) => {
         setAudioPlayerData(allSongs)
         setSongIndex(index)
+        setIsPlaying(true)
     }
     return (
         <div className='w-full min-h-[38vh] text-light ' id='random_Songs'>
@@ -23,7 +25,7 @@ const RandomSongs = ({ count }) => {
                             return (
                                 <figure className=' w-[150px] ' key={index}>
                                     <div className='group relative w-[150px]   h-[150px] cursor-pointer  '>
-                                    {
+                                        {
                                             !((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
 
                                             <div className='absolute inset-0  bg-black/70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full  '
@@ -35,15 +37,13 @@ const RandomSongs = ({ count }) => {
                                             </div>
                                         }
                                         {
-                                            ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) &&
+                                            ((audioPlayerData.length > 0) && (audioPlayerData[songIndex].songName == song.songName)) && isPlaying == true &&
 
                                             <div className='absolute  bottom-0 w-[150px] h-[100%] bg-gradient-to-t from-white to-transparent flex justify-center items-end pb-3 rounded-full cursor-pointer z-20 '
-                                            onClick={() => handleAudio(index)}
-                                        >
-                                            <img src={gif} className='w-[60%] h-[50%]' />
-
-
-                                        </div>
+                                                onClick={() => handleAudio(index)}
+                                            >
+                                                <img src={gif} className='w-[60%] h-[50%]' />
+                                            </div>
                                         }
 
                                         <img src={song?.songThumbnail} className='  rounded-full w-[150px]   h-[150px]  object-cover ' alt={song?.songName} />

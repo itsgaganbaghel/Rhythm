@@ -5,13 +5,10 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import CustomInputFields from '../utilities/CustomInputFields'
 import { FaGooglePlusG } from "react-icons/fa";
-import Modal from '../Model/Modal'
-import Register from './Register'
 import { modalProviderContext } from '../Context/ModalContext'
-import ForgotPassword from './ForgotPassword'
 
 const Login = () => {
-  let { isVisibility, setVisibility, targetModel, setTargetModel } = useContext(modalProviderContext)
+  let { setVisibility, setTargetModel } = useContext(modalProviderContext)
 
   let initialRegisterFormData = {
     email: "",

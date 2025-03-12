@@ -9,11 +9,15 @@ export let addAlbumContext = createContext()
 const SongContext = ({ children }) => {
     let [songsData, setSongsData] = useState([]) // songs data : for payload
     let [songIndex, setSongIndex] = useState(null) //songIndex : dynamic indexing updation
+    const [isPlaying, setIsPlaying] = useState(true);
+
     let [audioPlayerData, setAudioPlayerData] = useState([]) // current song data 
     let [allAlbums, setAllAlbums] = useState([]) // all albums data : for displaying albums
     let [allSongs, setAllSongs] = useState([]) // all songs for new release , top , random etc
 
     let [favorite, setFavorite] = useState()
+
+
 
     // for uploading all the phots and songs url one by one in the cloudinary and return the url of the file
     let uploadOnCloudinary = async (e) => {
@@ -54,7 +58,7 @@ const SongContext = ({ children }) => {
     }, [allAlbums])
 
     return (
-        <addAlbumContext.Provider value={{ songIndex, setSongIndex, uploadOnCloudinary, setSongsData, songsData, allAlbums, allSongs, audioPlayerData, setAudioPlayerData }} >
+        <addAlbumContext.Provider value={{ songIndex, setSongIndex, uploadOnCloudinary, setSongsData, songsData, allAlbums, allSongs, audioPlayerData, setAudioPlayerData, favorite, isPlaying, setIsPlaying }} >
             {children}
         </addAlbumContext.Provider>
     )

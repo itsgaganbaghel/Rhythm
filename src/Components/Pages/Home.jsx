@@ -1,7 +1,7 @@
 
 import Footer from './Footer';
 import Hero from './Home/Hero';
-import NewReleased from './Home/newReleased';
+import NewReleased from './Home/NewReleased';
 import RandomSongs from './Home/RandomSongs';
 import TopAlbum from './Home/TopAlbum';
 import TrendingArtist from './Home/TrendingArtist';

@@ -27,7 +27,7 @@ const AlbumSideBar = () => {
         setVisibility(true)
     }
 
-
+    let linksArray = [["Home", '#Hero'], ["Top Albums", '#top_Album'], ["Trending Artist", '#trending_Artist'], [' New Release', '#new_Release'], ['Random Songs', '#random_Songs']]
 
     return (
         <div className=' min-h-[100vh] flex flex-col gap-2  items-center bg-primary border-r-2 border-r-accent text-light font-bold tracking-wide px-3  '>
@@ -36,32 +36,18 @@ const AlbumSideBar = () => {
             {
                 location?.pathname == "/" ?
                     <>
+                        {
+                            linksArray.map((v, i) => {
+                                return (
+                                    <a href={v[1]} key={i}
+                                        className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
+                                    >
+                                        {v[0]}
+                                    </a>
+                                )
+                            })
+                        }
 
-                        <a href='#Hero'
-                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-                        >
-                            Home
-                        </a>
-                        <a href='#top_Album'
-                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-                        >
-                            Top Albums
-                        </a>
-                        <a href='#trending_Artist'
-                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-                        >
-                            Trending Artist
-                        </a>
-                        <a href='#new_Release'
-                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-                        >
-                            New Release
-                        </a>
-                        <a href='#random_Songs'
-                            className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
-                        >
-                            Random Songs
-                        </a>
                     </>
                     :
                     <>
@@ -75,22 +61,18 @@ const AlbumSideBar = () => {
 
 
 
-            <p className='w-full pl-1 opacity-70 text-sm text-accent mt-6'>Library</p>
+            <p className='w-full pl-1 opacity-70 text-sm text-accent mt-3'>Library</p>
             <CustomNavLink to={'/'} text={"All Albums"} />
-            <CustomNavLink to={'/'} text={"Liked Songs"} />
+            <CustomNavLink to={'/user/FavoriteSongs'} text={"Liked Songs"} />
 
             {
                 authUserData !== null &&
                 <>
-                    <p className='w-full pl-1 opacity-70 text-sm text-accent mt-6'>user</p>
+                    <p className='w-full pl-1 opacity-70  text-accent mt-3'>user</p>
                     {
                         profileData?.isAdmin &&
                         < CustomNavLink to={'/user/addAlbum'} text={"Add Album"} />
                     }
-
-                    {/* {
-                        profileData?.isAdmin  && < CustomNavLink to={'/user/presentation/addAlbum'} text={"Add Album"} />
-                    } */}
                     <CustomNavLink to={'/user'} text={"Setting"} />
                     <button className='w-full text-start  hover:text-center py-2 px-4 rounded-lg hover:bg-light hover:text-primary transition-all duration-300'
                         onClick={handleSingOutMethods}

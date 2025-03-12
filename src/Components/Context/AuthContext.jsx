@@ -11,6 +11,7 @@ const AuthContext = ({ children }) => {
     let [showWebsite, setShowWebsite] = useState(false);
 
     let [profileData, setProfileData] = useState(null)
+    console.log(profileData)
     // let [theme, setTheme] = useState(false)
     // console.log("profile data of the auth user context ", profileData)
     let uid = authUserData?.uid || ""  //! because initial value of the authUserData is null  , this is the safe fallback
@@ -59,7 +60,7 @@ const AuthContext = ({ children }) => {
 
 
     return (
-        <AuthUserContext.Provider value={{ authUserData, profileData, showWebsite, setShowWebsite }}>
+        <AuthUserContext.Provider value={{ authUserData, profileData, showWebsite, setShowWebsite , setProfileData }}>
             {children}
         </AuthUserContext.Provider>
     )
