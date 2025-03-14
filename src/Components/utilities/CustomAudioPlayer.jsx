@@ -20,6 +20,7 @@ const CustomAudioPlayer = ({ tracks }) => {
     let { profileData, authUserData } = useContext(AuthUserContext)
     const [trackIndex, setTrackIndex] = useState(0);
     const [isMute, setIsMute] = useState(true)
+    const [isFavourite, setIsFavourite] = useState(false)
     const { songName: title, songActors: artist, color, songThumbnail: image, songUrl: audioSrc } = tracks[songIndex];
 
     useEffect(() => {
@@ -162,7 +163,6 @@ const CustomAudioPlayer = ({ tracks }) => {
 
     // ! add to fav songs
     let isSongExists = profileData?.favouriteSongs?.some((v) => v.songName === tracks[songIndex].songName);
-    console.log(isSongExists.toString())
 
     let handleFavouriteSongs = async (song) => {
         console.log(song, "song")
@@ -184,24 +184,34 @@ const CustomAudioPlayer = ({ tracks }) => {
         try {
             await setDoc(doc(__DB, "user_Profile", authUserData?.uid), payload);
             toast.success("Song is added in Your Favourites");
+            setIsFavourite(true)
         } catch (error) {
             toast.error("Failed to update favourites");
             toast.error(error.code.slice(5))
         }
     };
 
-    console.log(profileData?.favouriteSongs.filter((v, i) => v.songName !== tracks[songIndex].songName))
+    // console.log(profileData?.favouriteSongs.filter((v, i) => v.songName !== tracks[songIndex].songName))
 
     let handleDeletionFavouriteSongs = async (song) => {
         console.log("song : ", song)
         if (authUserData?.uid) {
             let payload = { ...profileData, favouriteSongs: profileData?.favouriteSongs.filter((v, i) => v.songName !== song.songName) }
-            console.log(payload)
+            // console.log(payload)
             payload &&
                 await setDoc(doc(__DB, "user_Profile", authUserData?.uid), payload)
             toast.success('Removed from favourites')
+            setIsFavourite(false)
         } else {
             toast.error("login First")
+        }
+    }
+
+    let handleFavourite = (song) => {
+        if (isFavourite) {
+            handleDeletionFavouriteSongs(song)
+        } else {
+            handleFavouriteSongs(song)
         }
     }
 
@@ -248,7 +258,9 @@ const CustomAudioPlayer = ({ tracks }) => {
                     <button
                         className="text-gray-500 hover:text-white focus:outline-none ml-2 "
                         title='add to favourite '
-                        onClick={isSongExists === true ? () => handleDeletionFavouriteSongs() : () => handleFavouriteSongs(tracks[songIndex])}
+                        // onClick={isSongExists === true ? () => handleDeletionFavouriteSongs(tracks[songIndex]) : () => handleFavouriteSongs(tracks[songIndex])}
+
+                        onClick={() => handleFavourite(tracks[songIndex])}
                     >
                         {
                             isSongExists === true ? <RiDislikeLine /> : <FaRegHeart />
